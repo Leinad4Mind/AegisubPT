@@ -3,6 +3,7 @@ Desclocar-Posicionamento-Aegisub
 
 Serve para desclocar \pos, \move, \org e \clip
 
+NOTA: A versão macol é uma das primeiras versões que deu origem mais tarde à pos_shift.
 
 Por fazer
 -----------------
