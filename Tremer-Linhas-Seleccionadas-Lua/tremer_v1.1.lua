@@ -5,8 +5,11 @@
 script_name = "Tremer"
 script_description = "Tremer linhas seleccionadas."
 script_author = "Youka e Leinad4Mind"
-script_version = "1.0"
-script_modified = "20 de Setembro 2012"
+script_version = "1.1"
+script_modified = "1 de Outubro 2012"
+
+-- Frame duration in milliseconds
+local frame_dur = aegisub.video_size() and (aegisub.ms_from_frame(101)-aegisub.ms_from_frame(1)) / 100 or 41.71
 
 --Deep table copy
 function table.copy(t1)
@@ -25,7 +28,7 @@ end
 function frames(starts, ends, frame_time)
 	local cur_start_time = starts
 	local function next_frame()
-		if cur_start_time == ends then
+		if cur_start_time >= ends then
 			return nil
 		end
 		local return_start_time = cur_start_time
@@ -42,7 +45,6 @@ function frame_generator(subs, sel, step, filter)
 		local x_add, y_add = filter()
 		return "\\pos("..(x + x_add)..","..(y + y_add)..")"
 	end
-	local frame_dur = aegisub.video_size() and (aegisub.ms_from_frame(101)-aegisub.ms_from_frame(1)) / 100 or 41.71
 	local add = 0
 	for _, i in ipairs(sel) do
 		local sub = subs[i+add]
@@ -272,7 +274,7 @@ end
 function test_null_frames(subs, sel)
 	for i, si in ipairs(sel) do
 		local sub = subs[si]
-		if (math.ceil((sub.end_time - sub.start_time)) < 1) then
+		if (math.ceil((sub.end_time - sub.start_time) / frame_dur) < 1) then
 			return false
 		end
 	end
