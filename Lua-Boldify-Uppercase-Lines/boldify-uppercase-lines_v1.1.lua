@@ -1,12 +1,12 @@
 --[[
- Copyright (c) 2021, fmmagalhaes
+ Copyright (c) 2021-2024, fmmagalhaes & Leinad4Mind
  All rights reserved®.
 --]]
 
 script_name = "Negrito nas Linhas Maiúsculas"
 script_description = "Encontra linhas em maiúscula e adiciona tag negrito às mesmas"
-script_author = "fmmagalhaes"
-script_version = "1.0"
+script_author = "fmmagalhaes & Leinad4Mind"
+script_version = "1.1"
 
 re = require("re")
 
@@ -25,7 +25,7 @@ function boldify_uppercase_lines(subs)
 		end
 	end
 
-	aegisub.set_undo_point("Boldify")
+	aegisub.set_undo_point(script_name)
 end
 
 function is_uppercase_text(text)
