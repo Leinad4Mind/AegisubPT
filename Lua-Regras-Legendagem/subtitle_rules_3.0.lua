@@ -19,9 +19,6 @@ path_rules = ADP("?user").."\\regras_legendagem.conf"
 path_presets = ADP("?user").."\\presets.conf"
 last_preset_path = ADP("?user").."\\last_preset.conf"
 
-local utf8 = require "utf8"
-local re = require "aegisub.re"
-
 -- Função para verificar se o texto está em maiúsculas
 local function is_uppercase_text(text)
     return text == text:upper() and text:match("%S")
